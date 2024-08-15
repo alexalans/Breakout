@@ -29,7 +29,7 @@ class Score(Turtle):
                    move=False, align='center', font=('Arial', 20, 'normal'))
 
     def game_over(self):
-        self.teleport(0, 0)
+        self.teleport(0, -100)
         self.clear()
         self.write("GAME OVER!",
-                   move=False, align='center', font=('Arial', 100, 'bold'))
+                   move=False, align='center', font=('Arial', 80, 'bold'))

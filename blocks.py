@@ -11,13 +11,18 @@ CANVAS_HEIGHT = 400
 
 level_1 = []
 
+
 def check_blocks(ball_x, ball_y):
     for block in blocks_list:
-        if (block.ycor() - (BLOCK_HEIGHT * 18)) < ball_y < (block.ycor() + (BLOCK_HEIGHT * 18)):
-            if (block.xcor() - (BLOCK_LENGTH * 18)) < ball_x < (block.xcor() + (BLOCK_LENGTH * 18)):
-                block.teleport(1000, 1000)
-                return True
-                #TODO make block do something before disappearing? Would require 2 screen updates.
+        if ((block.ycor() - (BLOCK_HEIGHT * 18)) < ball_y < (block.ycor() + (BLOCK_HEIGHT * 18))
+                and (block.xcor() - (BLOCK_LENGTH * 18)) < ball_x < (block.xcor() + (BLOCK_LENGTH * 18))):
+            block.teleport(1000, 1000)
+            result = "bottom hit"
+            if block.ycor() - (BLOCK_HEIGHT * 11) < ball_y < block.ycor() + (BLOCK_HEIGHT * 11):
+                result = "side hit"
+            return result
+            #TODO make block do something before disappearing? Would require 2 screen updates.
+
 
 def create_level(level):
     if level == 1:

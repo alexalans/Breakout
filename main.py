@@ -12,10 +12,15 @@ LIVES = 3
 def check_break():
     ball_y = ball.ycor()
     ball_x = ball.xcor()
-    if blocks.check_blocks(ball_x, ball_y):
+    direction = blocks.check_blocks(ball_x, ball_y)
+    if direction == "bottom hit":
         ball.change_direction_y()
         return True
-        #TODO make ball change the right direction depending on whether it hits a block from the side or from the bottom
+    elif direction == "side hit":
+        ball.change_direction_x()
+        return True
+    else:
+        return False
 
 def check_bat():
     if (player.ycor() - 20) < ball.ycor() < (player.ycor() + 20):
@@ -68,8 +73,13 @@ while game_on:
     if ball.check_bottom():
         nr_lives -= 1
         lives[-1].teleport(1000, 1000)
-    if nr_lives == 0:
+        lives.pop()
+        print(lives)
+    if nr_lives < 1:
         scorekeeper.game_over()
+        ball.teleport(1000, 1000)
+        screen.update()
+        game_on = False
     screen.update()
 
 """
