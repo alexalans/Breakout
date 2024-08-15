@@ -25,10 +25,12 @@ class Ball(Turtle):
             self.change_direction_y()
 
     def change_direction_y(self):
-        self.setheading(360 - (self.heading()))
+        random_adjustment = random.randint(-12, 12)
+        self.setheading(360 - random_adjustment - (self.heading()))
 
     def change_direction_x(self):
-        self.setheading(180 - (self.heading()))
+        random_adjustment = random.randint(-12, 12)
+        self.setheading(180 - random_adjustment - (self.heading()))
 
     def new_ball(self):
         self.home()
@@ -40,10 +42,5 @@ class Ball(Turtle):
             return True
 
     def start_angle(self):
-        angle = random.randint(0, 360)
-        if 75 < angle < 105:
-            self.start_angle()
-        elif 255 < angle < 285:
-            self.start_angle()
-        else:
-            self.setheading(angle)
+        angle = random.randint(250, 290)
+        self.setheading(angle)

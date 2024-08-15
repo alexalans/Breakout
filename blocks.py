@@ -28,7 +28,7 @@ def create_level(level):
         for color in colors:
             for n in range(blocks_per_row):
                 block = Block()
-                block.color("white", color)
+                block.color("black", color)
                 block.teleport(x_cor, y_cor)
                 x_cor += (BLOCK_LENGTH * 20)
             y_cor -= (BLOCK_HEIGHT * 20)
@@ -39,7 +39,7 @@ class Block(Turtle):
     def __init__(self):
         super().__init__()
         self.shape("square")
-        self.shapesize(stretch_wid=BLOCK_HEIGHT, stretch_len=BLOCK_LENGTH, outline=2)
+        self.shapesize(stretch_wid=BLOCK_HEIGHT, stretch_len=BLOCK_LENGTH, outline=3)
         self.penup()
         self.setheading(180)
         blocks_list.append(self)
